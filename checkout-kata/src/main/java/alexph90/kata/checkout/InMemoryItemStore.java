@@ -10,23 +10,23 @@ import java.util.Map;
  */
 public class InMemoryItemStore implements ItemStore {
 
-	Map<String, Item> itemMap = new HashMap<>();
+	Map<StockKeepingUnit, Item> itemMap = new HashMap<>();
 	
 	@Override
 	public void addItem(Item item) {
-		itemMap.put(item.getSku(), item);
+		itemMap.put(item.getStockKeepingUnit(), item);
 	}
 
 	@Override
-	public void deleteItemBySku(String sku) {
-		itemMap.remove(sku);
+	public void deleteItemByStockKeepingUnit(StockKeepingUnit stockKeepingUnit) {
+		itemMap.remove(stockKeepingUnit);
 	}
 
 	@Override
-	public Item getItemBySku(String sku) throws ItemNotFoundException {
-		Item item = itemMap.get(sku);
+	public Item getItemByStockKeepingUnit(StockKeepingUnit stockKeepingUnit) throws ItemNotFoundException {
+		Item item = itemMap.get(stockKeepingUnit);
 		
-		if (item == null) throw new ItemNotFoundException("Item with SKU " + sku + " not found!");
+		if (item == null) throw new ItemNotFoundException("Item with SKU " + stockKeepingUnit + " not found!");
 		
 		return item;
 	}

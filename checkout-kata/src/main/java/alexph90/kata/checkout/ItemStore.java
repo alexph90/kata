@@ -12,7 +12,7 @@ public interface ItemStore {
 	 * Delete the item with the given SKU (if it exists) from the item store.
 	 * @param sku
 	 */
-	void deleteItemBySku(String sku);
+	void deleteItemByStockKeepingUnit(StockKeepingUnit stockKeepingUnit);
 	
 	/**
 	 * Get the item with the given SKU from the item store.
@@ -20,6 +20,6 @@ public interface ItemStore {
 	 * @return
 	 * @throws ItemNotFoundException if the item does not exist
 	 */
-	Item getItemBySku(String sku) throws ItemNotFoundException;
+	Item getItemByStockKeepingUnit(StockKeepingUnit stockKeepingUnit) throws ItemNotFoundException;
 	
 }

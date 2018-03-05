@@ -4,16 +4,16 @@ import java.math.BigDecimal;
 
 public final class Item {
 	
-	private final String sku;
+	private final StockKeepingUnit stockKeepingUnit;
 	private final BigDecimal price;
 	
-	public Item(String sku, BigDecimal price) {
-		this.sku = sku;
+	public Item(StockKeepingUnit stockKeepingUnit, BigDecimal price) {
+		this.stockKeepingUnit = stockKeepingUnit;
 		this.price = price;
 	}
 	
-	public String getSku() {
-		return sku;
+	public StockKeepingUnit getStockKeepingUnit() {
+		return stockKeepingUnit;
 	}
 
 	public BigDecimal getPrice() {

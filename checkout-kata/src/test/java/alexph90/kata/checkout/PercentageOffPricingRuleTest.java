@@ -1,6 +1,8 @@
 package alexph90.kata.checkout;
 
-import static alexph90.kata.checkout.TestConstants.*;
+import static alexph90.kata.checkout.TestConstants.A;
+import static alexph90.kata.checkout.TestConstants.B;
+import static alexph90.kata.checkout.TestConstants.C;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -10,18 +12,14 @@ import java.util.stream.IntStream;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.equalTo;
-
-public class MultiBuyPricingRuleTest {
+public class PercentageOffPricingRuleTest {
 
 	private Item itemA = new Item(A, new BigDecimal("50"));
 	private Item itemB = new Item(B, new BigDecimal("30"));
 	private Item itemC = new Item(C, new BigDecimal("20"));
 	private List<Item> items = new ArrayList<>();
-	private MultiBuyPricingRule ruleA;
-	private MultiBuyPricingRule ruleB;
+	private PercentageOffPricingRule ruleA;
+	private PercentageOffPricingRule ruleB;
 	
 	@Before
 	public void setUp() {
@@ -35,18 +33,15 @@ public class MultiBuyPricingRuleTest {
 		IntStream.range(1, 2)
 					.forEach(i -> items.add(itemC));
 		
-		ruleA = new MultiBuyPricingRule(itemA, 3, new BigDecimal("130"));
-		ruleB = new MultiBuyPricingRule(itemB, 2, new BigDecimal("45"));
+		ruleA = new PercentageOffPricingRule(BigDecimal.valueOf(50), item -> item.getStockKeepingUnit().equals(A));
+		ruleB = new PercentageOffPricingRule(new BigDecimal("0.5"), item -> item.getStockKeepingUnit().equals(A));
 	}
 	
 	@Test
 	public void whenRuleAAppliedThenDiscountShouldBeCorrect() {
-		assertThat(ruleA.getDiscount(items), is(equalTo(new BigDecimal("20"))));
-	}
-	
-	@Test
-	public void whenRuleBAppliedThenDiscountShouldBeCorrect() {
-		assertThat(ruleB.getDiscount(items), is(equalTo(new BigDecimal("15"))));
+		
+		
+		
 	}
 
 }

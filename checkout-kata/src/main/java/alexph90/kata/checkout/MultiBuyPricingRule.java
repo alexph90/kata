@@ -31,7 +31,7 @@ public class MultiBuyPricingRule implements PricingRule{
 		// Casting long to int as very unlikely to be larger
 		int applicableItemCount = (int) items
 											.stream()
-											.filter(i -> i.getSku().equals(item.getSku()))
+											.filter(i -> i.getStockKeepingUnit().equals(item.getStockKeepingUnit()))
 											.count();
 		
 		int multibuyGroups = applicableItemCount / multiBuyQuantity;

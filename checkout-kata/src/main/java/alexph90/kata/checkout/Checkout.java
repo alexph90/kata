@@ -40,8 +40,8 @@ public class Checkout {
 	 * @throws ItemNotFoundException if the {@code Item} with the given SKU is not 
 	 * present in the {@code ItemStore}
 	 */
-	public void scan(String sku) throws ItemNotFoundException {
-		Item item = itemStore.getItemBySku(sku);
+	public void scan(StockKeepingUnit stockKeepingUnit) throws ItemNotFoundException {
+		Item item = itemStore.getItemByStockKeepingUnit(stockKeepingUnit);
 		basket.add(item);
 	}
 	

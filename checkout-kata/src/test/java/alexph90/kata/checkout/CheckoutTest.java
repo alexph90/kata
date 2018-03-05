@@ -4,6 +4,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
+import static alexph90.kata.checkout.TestConstants.*;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +15,6 @@ import org.junit.Test;
 
 public class CheckoutTest {
 	
-	private final String A = "A";
-	private final String B = "B";
-	private final String C = "C";
-	private final String D = "D";
 	private final Item itemA = new Item(A, BigDecimal.valueOf(50));
 	private final Item itemB = new Item(B, BigDecimal.valueOf(30));
 	private final Item itemC = new Item(C, BigDecimal.valueOf(20));
@@ -81,13 +79,13 @@ public class CheckoutTest {
 	
 	@Test(expected = ItemNotFoundException.class)
 	public void whenScannedItemDoesNotExistThenThrowException() throws ItemNotFoundException {
-		checkoutNoDiscount.scan("E");
+		checkoutNoDiscount.scan(E);
 	}
 	
 	// Helper method for brevity
-	private void scanMultiple(Checkout checkout, String... skus) throws ItemNotFoundException {
+	private void scanMultiple(Checkout checkout, StockKeepingUnit... skus) throws ItemNotFoundException {
 		
-		for (String sku : skus) {
+		for (StockKeepingUnit sku : skus) {
 			checkout.scan(sku);
 		}
 	}
